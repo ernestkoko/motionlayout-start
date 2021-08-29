@@ -15,6 +15,7 @@
 
 package com.google.samples.motionlayoutcodelab
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -119,6 +120,7 @@ class MainViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
     val description: TextView = cardView.findViewById(R.id.description)
     val caption: TextView = cardView.findViewById(R.id.caption)
 
+    @SuppressLint("NewApi")
     fun bind(step: Step) {
         header.text = step.number
         description.text = step.name
@@ -129,9 +131,10 @@ class MainViewHolder(val cardView: CardView) : RecyclerView.ViewHolder(cardView)
             context.startActivity(intent)
         }
         val color = if (step.highlight) {
-            context.resources.getColor(R.color.secondaryLightColor)
+
+            context.resources.getColor(R.color.secondaryLightColor, null)
         } else {
-            context.resources.getColor(R.color.primaryTextColor)
+            context.resources.getColor(R.color.primaryTextColor,null)
         }
         header.setTextColor(color)
         description.setTextColor(color)
